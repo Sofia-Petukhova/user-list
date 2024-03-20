@@ -1,0 +1,14 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 5px;
+  border-radius: 5px;
+  border: 1px solid #959595;
+}
+
+.user div {
+  padding: 2px 5px;
+  border-radius: 5px;
+  border: 1px solid #959595;
+  width: 200px;
+}

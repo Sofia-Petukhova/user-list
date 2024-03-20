@@ -1,0 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.form label {
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.form input {
+  margin-bottom: 10px;
+  font-size: 15px;
+  padding: 4px 5px;
+  border-radius: 5px;
+  border: 1px solid #959595;
+}
