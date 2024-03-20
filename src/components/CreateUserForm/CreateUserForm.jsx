@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../UI/Button";
+import Button from "../UI/Button/Button";
 import styles from "./CreateUserForm.module.css";
 
 const CreateUserForm = ({ createUser }) => {

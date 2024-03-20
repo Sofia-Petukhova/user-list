@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 300px;
 }
 
 .form label {
@@ -14,5 +14,6 @@
   font-size: 15px;
   padding: 4px 5px;
   border-radius: 5px;
+  background-color: #ffffff;
   border: 1px solid #959595;
 }

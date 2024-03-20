@@ -2,13 +2,16 @@
   display: flex;
   justify-content: space-between;
   padding: 4px 5px;
+  margin-bottom: 5px;
   border-radius: 5px;
-  border: 1px solid #959595;
+  border: 1px solid #4c4c4c;
+  background-color: rgb(221, 123, 199);
 }
 
 .user div {
   padding: 2px 5px;
   border-radius: 5px;
   border: 1px solid #959595;
-  width: 200px;
+  width: 130px;
+  background-color: #fff;
 }
