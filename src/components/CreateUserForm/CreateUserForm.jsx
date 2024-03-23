@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../UI/Button/Button";
 import styles from "./CreateUserForm.module.css";
 
-const CreateUserForm = ({ createUser }) => {
+const CreateUserForm = ({ createUser, showModal, changeModal }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
 
@@ -11,12 +11,22 @@ const CreateUserForm = ({ createUser }) => {
 
     const newUser = {
       id: Math.random(),
-      name: name,
+      name: name.replace(/\s+/g, " ").trim(),
       age: age,
     };
-    createUser(newUser);
+
+    if (name === "" || age === "") {
+      showModal(true);
+      changeModal("Некорректный ввод", "Поля не могут быть пустыми");
+    } else if (age < 1) {
+      showModal(true);
+      changeModal("Некорректный возраст", "Возраст должен быть больше нуля");
+    } else {
+      createUser(newUser);
+    }
+
     setName("");
-    setAge(1);
+    setAge("");
   };
 
   const handleChangeName = (event) => {
