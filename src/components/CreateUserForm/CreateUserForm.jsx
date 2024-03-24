@@ -5,7 +5,7 @@ import styles from "./CreateUserForm.module.css";
 const CreateUserForm = ({ createUser, showModal, changeModal }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -52,12 +52,12 @@ const CreateUserForm = ({ createUser, showModal, changeModal }) => {
       />
       <label htmlFor="age">Возраст:</label>
       <input
-        type="number"
+        type="text"
         id="age"
         name="age"
         placeholder="23"
         onChange={handleChangeAge}
-        max={200}
+        value={age}
       />
       <Button type="submit">Отправить</Button>
     </form>
