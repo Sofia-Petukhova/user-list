@@ -2,10 +2,10 @@ import { useState } from "react";
 import Button from "../UI/Button/Button";
 import styles from "./CreateUserForm.module.css";
 
-const CreateUserForm = ({ createUser, showModal, changeModal }) => {
+const CreateUserForm = ({ onCreateUser, showModal, setAgeError }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -15,26 +15,27 @@ const CreateUserForm = ({ createUser, showModal, changeModal }) => {
       age: age,
     };
 
-    if (name === "" || age === "") {
+    if (!newUser.name || !newUser.age) {
       showModal(true);
-      changeModal("Некорректный ввод", "Поля не могут быть пустыми");
-    } else if (age < 1) {
-      showModal(true);
-      changeModal("Некорректный возраст", "Возраст должен быть больше нуля");
-    } else {
-      createUser(newUser);
+      return;
     }
 
+    if (age < 1) {
+      setAgeError(true);
+      return;
+    }
+
+    onCreateUser(newUser);
     setName("");
     setAge("");
   };
 
-  const handleChangeName = (event) => {
-    setName(event.target.value);
+  const handleChangeName = ({ target }) => {
+    setName(target.value);
   };
 
-  const handleChangeAge = (event) => {
-    setAge(event.target.value);
+  const handleChangeAge = ({ target }) => {
+    setAge(target.value.replace(/\D/g, ""));
   };
 
   return (
@@ -42,7 +43,6 @@ const CreateUserForm = ({ createUser, showModal, changeModal }) => {
       <label htmlFor="name">Имя:</label>
       <input
         autoFocus
-        type="text"
         id="name"
         name="name"
         placeholder="Иван"
@@ -52,12 +52,12 @@ const CreateUserForm = ({ createUser, showModal, changeModal }) => {
       />
       <label htmlFor="age">Возраст:</label>
       <input
-        type="text"
         id="age"
         name="age"
         placeholder="23"
         onChange={handleChangeAge}
         value={age}
+        maxLength={3}
       />
       <Button type="submit">Отправить</Button>
     </form>

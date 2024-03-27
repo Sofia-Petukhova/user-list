@@ -18,7 +18,7 @@ const Modal = ({ active, setActive, title, description, textButton }) => {
           <div className={styles.description}>{description}</div>
           <div>
             <Button onClick={closeModal} type="button">
-              {textButton}
+              {textButton || "Закрыть"}
             </Button>
           </div>
         </div>
